@@ -12,8 +12,6 @@ url = 'https://wttr.in/{}'.format(city)
 # Weather ASCII answer from wttr url request
 weather_res = requests.get(url)
 
-print(weather_res.text)
-
 # OpenAI key for requests (warning : do not exceed subscription requests !)
 client = OpenAI(api_key="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")
 
