@@ -15,13 +15,15 @@ print(weather_res.text)
 # OpenAI key for requests (warning : do not exceed subscription requests !)
 client = OpenAI(api_key="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")
 
-# 
+# ChatGPT request
 completion = client.chat.completions.create(
   model="gpt-3.5-turbo",
   messages=[
+    # Defining Assistant as a proficient cooking recipy provider to guide future answer.
     {"role": "system", "content": "You are a cooking assistant, skilled in prociding detailed recipies based on local weather."},
     {"role": "user", "content": "Provide a cooking recipe matching the following weather conditions and geographical coordinates." + weather_res.text}
   ]
 )
 
+# Returning recipe
 print(completion.choices[0].message)
