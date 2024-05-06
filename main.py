@@ -1,5 +1,7 @@
 import requests
+import customtkinter as ctk
 from openai import OpenAI
+
 
 # City name import
 city = input('Please input the city name : ')
@@ -25,5 +27,8 @@ completion = client.chat.completions.create(
   ]
 )
 
-# Returning recipe
-print(completion.choices[0].message)
+# Printing results in pretty window
+app = ctk.CTk()
+label = ctk.CTkLabel(app, text=completion.choices[0].message.content, fg_color="transparent", anchor="w", justify="left")
+label.grid(row=0, column=0, padx=20, pady=20)
+app.mainloop()
